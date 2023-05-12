@@ -70,6 +70,7 @@ func readCommand() {
             default:
                 break
             }
+            
         }
     }
 }
