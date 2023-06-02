@@ -10,6 +10,7 @@ let length = Int(String(readLine()!))!
 func OXQuiz() {
     for _ in 1...length {
         let quiz = readLine()!
+        
         checkScore(correct: quiz)
     }
 }
