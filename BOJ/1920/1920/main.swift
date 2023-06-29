@@ -5,37 +5,38 @@
 //  Created by 이치훈 on 2023/05/18.
 //
 
-let findNumLength = Int(String(readLine()!))!
-var findNums = readLine()!.split(separator: " ").map {
+let firstNumLength = Int(String(readLine()!))!
+var firstNums = readLine()!.split(separator: " ").map {
+    Int(String($0))!
+}
+firstNums.sort()
+
+let secondNumLength = Int(String(readLine()!))!
+var secondNums = readLine()!.split(separator: " ").map {
     Int(String($0))!
 }
 
-let operandNumLength = Int(String(readLine()!))!
-var operandNums = readLine()!.split(separator: " ").map {
-    Int(String($0))!
+for i in 0..<secondNumLength {
+  let result = binarySearch(firstNums, secondNums[i])
+  print(result)
 }
 
-var temp: Int = 0
-
-func soltNumbuers( soltNums: inout [Int], length: Int) {
-    for i in 0...length - 1 {
-        for j in 0..<length - i - 1 {
-            if soltNums[j] > soltNums[j + 1] {
-                temp = soltNums[j]
-                soltNums[j] = soltNums[j + 1]
-                soltNums[j + 1] = temp
-            }
-        }
+func binarySearch(_ firstNums: [Int], _ target: Int) -> Int {
+  var start = 0
+  var last = firstNums.count - 1
+  
+  while start <= last {
+    var mid = (start + last) / 2
+    
+    if firstNums[mid] == target{
+      return 1
+    } else if firstNums[mid] < target {
+      start = mid + 1
     }
-}
-
-soltNumbuers(soltNums: &findNums, length: findNumLength)
-
-for i in 0...findNumLength - 1 {
-    if findNums[i] == operandNums[i] {
-        print(1)
+    else if firstNums[mid] > target {
+     last = mid - 1
     }
-    else {
-        print(0)
-    }
+  }
+
+  return 0
 }
