@@ -97,7 +97,7 @@ func pop_back() -> Int {
     return -1
   }
   
-  let temp = head?.data
+  let temp = tail?.data
   count -= 1
   tail = tail?.rear
   tail?.front = nil
