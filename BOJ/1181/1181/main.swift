@@ -5,56 +5,18 @@
 //  Created by 이치훈 on 2023/06/01.
 //
 
-import Foundation
+let n = Int(String(readLine()!))!
+var dict = [String:Int]()
 
-struct Word {
-    var length = 0
-    var data = ""
-    var isOnly = true
+for _ in 1...n {
+  let word = readLine()!
+  dict[word, default: 0] += 1
 }
 
-let length = Int(String(readLine()!))!
-var originWords = [String]()
-var words = [Word]()
-
-var tttttt = [String]()
-
-for _ in 1...length {
-    originWords.append(readLine()!)
+let dictSort = dict.sorted {
+  $0.key.count == $1.key.count ? $0.key < $1.key : $0.key.count < $1.key.count
 }
 
-tttttt = Array(Set(originWords))
-
-for i in 0..<tttttt.count {
-    words.append(Word(length: tttttt[i].count, data: tttttt[i]))
-}
-
-for j in 0..<words.count {
-    for i in 0..<words.count - j {
-        if i != 0 {
-            if words[i - 1].data > words[i].data {
-                let temp = words[i - 1]
-                words[i - 1] = words[i]
-                words[i] = temp
-            }
-        }
-    }
-}
-
-
-for j in 0..<words.count {
-    for i in 0..<words.count - j {
-        if i != 0 {
-            if words[i - 1].length > words[i].length {
-                let temp = words[i - 1]
-                words[i - 1] = words[i]
-                words[i] = temp
-            }
-        }
-    }
-}
-
-
-for i in 0..<words.count {
-    print(words[i].data)
+for i in 0..<dictSort.count {
+  print(dictSort[i].key)
 }
