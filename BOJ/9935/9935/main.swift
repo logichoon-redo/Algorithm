@@ -17,7 +17,7 @@ for s in input {
     if stack.count >= bomb.count && String(stack[(stack.count - bomb.count)...]) == bomb {
       _=(1...bomb.count).map { _ in
         stack.popLast()
-      }r
+      }
     }
   }
 }
