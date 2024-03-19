@@ -11,14 +11,9 @@ var graph = [[Int]](repeating: [], count: n)
 var virus = [(Int, Int)]()
 let moveX = [1, -1, 0, 0]
 let moveY = [0, 0, 1, -1]
-//var depth = 0
 var answer = 0
 _=(0..<n).map { i in
   graph[i] = readLine()!.split(separator: " ").map { Int(String($0))! }
-  
-//  _=graph[i].map { j in
-//    
-//  }
 }
 for i in 0..<n {
   for j in 0..<m {
